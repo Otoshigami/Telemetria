@@ -1,0 +1,185 @@
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+    <div class="navbar"><span>Real-Time Chart with Plotly.js</span></div>
+    <div class="wrapper">
+
+        <div id="chart"></div>
+        <script>
+            // PRIMERAS GRAFICAS EN TIEMPO REAL
+            function getData() {
+                return Math.random();
+            }  
+            function getData2(){
+                return Math.random();
+            }
+
+            var trazo1 ={
+                y: [getData()],
+                xaxis:'x1',
+                yaxis:'y1',
+                type:'scatter'
+            };
+
+            var trace2 = {
+                y: [getData2()],
+                xaxis: 'x2',
+                yaxis: 'y2',
+                type: 'scatter'
+            };
+
+            var data = [trazo1, trace2];
+
+            var layout = {
+                grid: {rows: 1, columns: 2, pattern: 'independent'},
+            };
+
+            Plotly.newPlot('chart', data, layout);
+            var cnt = 0;
+            var cnt2 = 0;
+
+            setInterval(function(){
+                Plotly.extendTraces('chart',{ y:[[getData()]]}, [0]);
+                cnt++;
+                if(cnt > 50) {
+                    Plotly.relayout('chart',{
+                        xaxis: {
+                            range: [cnt-50,cnt]
+                        }
+                    });
+                }
+            },15);
+
+            setInterval(function(){
+                Plotly.extendTraces('chart',{ y:[[getData2()]]}, [1]);
+                cnt2++;
+                if(cnt2 > 50) {
+                    Plotly.relayout('chart',{
+                        xaxis: {
+                            range: [cnt2-50,cnt2]
+                        }
+                    });
+                }
+            },15);
+        </script>
+
+        <div id="chart2"></div>
+        <script>
+            // SEGUNDAS GRAFICAS EN TIEMPO REAL
+            function getData3() {
+                return Math.random();
+            }  
+            function getData4(){
+                return Math.random();
+            }
+
+            var trace1 = {
+                y: [getData3()],
+                type: 'scatter'
+            };
+            var trace2 = {
+                y: [getData4()],
+                xaxis: 'x2',
+                yaxis: 'y2',
+                type: 'scatter'
+            };
+
+            var data = [trace1, trace2];
+
+            var layout = {
+                grid: {rows: 1, columns: 2, pattern: 'independent'},
+            };
+
+            Plotly.newPlot('chart2', data, layout);
+            var cnt3 = 0;
+            var cnt4 = 0;
+
+            setInterval(function(){
+                Plotly.extendTraces('chart2',{ y:[[getData3()]]}, [0]);
+                cnt3++;
+                if(cnt3 > 50) {
+                    Plotly.relayout('chart2',{
+                        xaxis: {
+                            range: [cnt3-50,cnt3]
+                        }
+                    });
+                }
+            },15);
+
+            setInterval(function(){
+                Plotly.extendTraces('chart2',{ y:[[getData4()]]}, [1]);
+                cnt4++;
+                if(cnt4 > 50) {
+                    Plotly.relayout('chart2',{
+                        xaxis: {
+                            range: [cnt4-50,cnt4]
+                        }
+                    });
+                }
+            },15);
+        </script>
+
+        <div id="chart3"></div>
+        <script>
+            // TERCERAS GRAFICAS DEL VEHICULO
+            function getData5(){
+                return Math.random();
+            }
+            function getData6(){
+                return Math.random();
+            }
+
+            var trace1 = {
+                y: [getData5()],
+                type: 'scatter'
+            };
+
+            var trace2 = {
+                y: [getData6()],
+                xaxis: 'x2',
+                yaxis: 'y2',
+                type: 'scatter'
+            };
+
+            var data = [trace1, trace2];
+
+            var layout = {
+                grid: {rows: 1, columns: 2, pattern: 'independent'},
+            };
+
+            Plotly.newPlot('chart3', data, layout);
+            var cnt5 = 0;
+            var cnt6 = 0;
+
+            setInterval(function(){
+                Plotly.extendTraces('chart3',{ y:[[getData5()]]}, [0]);
+                cnt5++;
+                if(cnt5 > 50) {
+                    Plotly.relayout('chart3',{
+                        xaxis: {
+                            range: [cnt5-50,cnt5]
+                        }
+                    });
+                }
+            },15);
+
+            setInterval(function(){
+                Plotly.extendTraces('chart3',{ y:[[getData6()]]}, [1]);
+                cnt6++;
+                if(cnt6 > 50) {
+                    Plotly.relayout('chart3',{
+                        xaxis: {
+                            range: [cnt6-50,cnt6]
+                        }
+                    });
+                }
+            },15);
+        </script>
+
+
+    </div>
+    </body>
+</html>
